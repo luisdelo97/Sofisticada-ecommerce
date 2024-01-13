@@ -1,10 +1,5 @@
-import { Box } from "@chakra-ui/react";
+import { Navbar } from "@src/components/Navbar/Navbar";
 
 export default function Home() {
-  return (
-    <main>
-      <h1>Sofisticada</h1>
-      <Box color="brand.primary">hola</Box>
-    </main>
-  );
+  return <main>hola</main>;
 }

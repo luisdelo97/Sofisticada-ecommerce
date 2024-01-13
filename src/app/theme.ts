@@ -7,3 +7,5 @@ export const colors = {
     primaryDark: "hsl(17, 70%, 54%)",
   },
 };
+
+export const theme = extendTheme({ colors });
