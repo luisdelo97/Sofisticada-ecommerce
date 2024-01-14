@@ -1,13 +1,13 @@
-import { IItem, NavItem } from './model';
+import { IItem, NavItem } from "./model";
 
 export const navItems: NavItem[] = [
   {
-    label: 'All Products',
-    href: '/products',
+    label: "All Products",
+    href: "/products",
   },
   {
-    label: 'Categories',
-    href: '/categories',
+    label: "Categories",
+    href: "/categories",
   },
 ];
 

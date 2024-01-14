@@ -12,7 +12,7 @@ export function DesktopNav() {
       justify="space-between"
       alignItems="center"
       display={{ base: "none", lg: "flex" }}
-      px="2rem"
+      px="4rem"
       py="1rem"
       borderBottom="1px"
       borderColor="gray.200"

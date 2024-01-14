@@ -1,5 +1,5 @@
 "use client";
-// import { SearchIcon } from "@chakra-ui/icons";
+import { CiSearch } from "react-icons/ci";
 import {
   Box,
   Flex,
@@ -11,7 +11,7 @@ import {
   Text,
   useOutsideClick,
 } from "@chakra-ui/react";
-import { IProduct } from "@src/model";
+import type { IProduct } from "@src/model";
 // import { client } from "@utils/sanity.client";
 import { groq } from "next-sanity";
 import Link from "next/link";
@@ -70,13 +70,12 @@ export const Search = () => {
   return (
     <Box pos="relative" w={{ base: "100%", lg: "32rem" }} ref={ref}>
       <InputGroup {...inputGroup}>
-        <InputLeftElement
-          pointerEvents="none"
-          // children={<SearchIcon color="gray.400" />}
-        />
+        <InputLeftElement pointerEvents="none">
+          <CiSearch color="gray.400" />
+        </InputLeftElement>
         <Input
           type="text"
-          placeholder="Search..."
+          placeholder="Buscar..."
           focusBorderColor="brand.primaryLight"
           borderWidth="1px"
           borderColor="gray.400"
@@ -112,9 +111,9 @@ export const Search = () => {
   );
 };
 
-interface SearchedProductListProps {
+type SearchedProductListProps = {
   products: IProduct[];
-}
+};
 
 const SearchedProductList = ({ products }: SearchedProductListProps) => {
   return (

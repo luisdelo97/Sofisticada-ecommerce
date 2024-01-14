@@ -5,10 +5,14 @@ import React from "react";
 export const AppLogo = () => {
   return (
     <Link href="/">
-      <Text color="gray.800" fontWeight="bold">
-        MS{" "}
-        <Text as="span" color="brand.primary">
-          BUY
+      <Text
+        color="brand.primary"
+        fontWeight="bold"
+        fontFamily="Times New Roman"
+      >
+        SOFI
+        <Text as="span" color="brand.primaryDark">
+          STICADA
         </Text>
       </Text>
     </Link>

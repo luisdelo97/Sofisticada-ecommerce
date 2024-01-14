@@ -33,8 +33,9 @@ export const Wishlist = () => {
             bgColor: "transparent",
           }}
           pos="relative"
+          px={{ base: "0.25rem" }}
         >
-          <BsHeart size="0.9rem" /> <Text mx="1">Wishlist</Text>
+          <BsHeart size="0.9rem" /> <Text mx="1">Deseos</Text>
           {/* {wishlist.length !== 0 && (
             <Flex
               pos="absolute"

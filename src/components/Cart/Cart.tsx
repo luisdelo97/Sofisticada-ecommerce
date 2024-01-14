@@ -50,8 +50,9 @@ export const Cart = () => {
           bgColor: "transparent",
         }}
         pos="relative"
+        px={{ base: "0.25rem" }}
       >
-        <BsCart4 /> <Text mx="1">Cart</Text>
+        <BsCart4 /> <Text mx="1">Carrito</Text>
         {/* {cart.length !== 0 && (
           <Flex
             pos="absolute"
