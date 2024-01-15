@@ -56,7 +56,8 @@ export const Banner = () => {
             my="2rem"
             w={{ base: "300px", lg: "600px" }}
             h={{ base: "300px", lg: "500px" }}
-            bg="center / cover no-repeat url(mockup.svg)"
+            borderRadius="1rem"
+            bg="center 10% / cover no-repeat url(sofi-home.png)"
           />
           {/* <BannerSlider /> */}
         </Box>

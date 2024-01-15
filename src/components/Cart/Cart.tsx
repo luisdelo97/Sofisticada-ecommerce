@@ -48,6 +48,7 @@ export const Cart = () => {
         color="brand.primary"
         _hover={{
           bgColor: "transparent",
+          color: "brand.primaryDark",
         }}
         pos="relative"
         px={{ base: "0.25rem" }}

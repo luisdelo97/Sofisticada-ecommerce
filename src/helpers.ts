@@ -2,11 +2,11 @@ import { IItem, NavItem } from "./model";
 
 export const navItems: NavItem[] = [
   {
-    label: "All Products",
+    label: "Productos",
     href: "/products",
   },
   {
-    label: "Categories",
+    label: "Categorias",
     href: "/categories",
   },
 ];

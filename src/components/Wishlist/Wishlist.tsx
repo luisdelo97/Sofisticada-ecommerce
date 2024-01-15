@@ -31,6 +31,7 @@ export const Wishlist = () => {
           variant="ghost"
           _hover={{
             bgColor: "transparent",
+            color: "brand.primaryDark",
           }}
           pos="relative"
           px={{ base: "0.25rem" }}

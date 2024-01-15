@@ -7,5 +7,5 @@ export const colors = {
     primaryDark: "hsl(17, 70%, 25%)",
   },
 };
-
+//#ffece7
 export const theme = extendTheme({ colors });

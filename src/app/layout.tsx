@@ -14,9 +14,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <head>
-        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
-      </head>
       <body>
         <ChakraProviders>
           <Navbar />

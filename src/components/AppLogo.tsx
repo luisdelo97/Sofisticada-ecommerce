@@ -9,6 +9,7 @@ export const AppLogo = () => {
         color="brand.primary"
         fontWeight="bold"
         fontFamily="Times New Roman"
+        fontSize={{ base: "md", lg: "2xl" }}
       >
         SOFI
         <Text as="span" color="brand.primaryDark">
