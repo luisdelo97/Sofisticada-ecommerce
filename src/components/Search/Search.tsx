@@ -79,6 +79,7 @@ export const Search = () => {
           focusBorderColor="brand.primaryLight"
           borderWidth="1px"
           borderColor="gray.400"
+          bgColor="white"
           value={searchText}
           onClick={() => setIsModalOpen(true)}
           onChange={(e) => setSearchText(e.target.value)}

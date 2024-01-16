@@ -25,7 +25,7 @@ export const Banner = () => {
             color="brand.primary"
             mb="0.5rem"
           >
-            Compras Online <br />
+            Online Shopping
           </Heading>
           <Heading
             as="h3"

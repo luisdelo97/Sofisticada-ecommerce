@@ -45,15 +45,18 @@ export const Cart = () => {
         ref={btnRef}
         onClick={onOpen}
         variant="ghost"
-        color="brand.primary"
+        color="brand.primaryDark"
         _hover={{
           bgColor: "transparent",
-          color: "brand.primaryDark",
+          color: "brand.primary",
         }}
         pos="relative"
         px={{ base: "0.25rem" }}
       >
-        <BsCart4 /> <Text mx="1">Carrito</Text>
+        <BsCart4 />
+        <Text mx="1" display={{ base: "none", md: "block" }}>
+          Carrito
+        </Text>
         {/* {cart.length !== 0 && (
           <Flex
             pos="absolute"

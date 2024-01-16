@@ -23,7 +23,7 @@ export function DesktopNav() {
         </Box>
 
         {navItems.map((navItem) => (
-          <Box key={navItem.label}>
+          <Box key={navItem.label} _hover={{ color: "brand.primary" }}>
             <Link href={navItem.href}>{navItem.label}</Link>
           </Box>
         ))}

@@ -25,7 +25,7 @@ export const NavMenu = () => {
 
   return (
     <>
-      <Button ref={btnRef} onClick={onOpen}>
+      <Button ref={btnRef} onClick={onOpen} background="transparent">
         <VscListFlat />
       </Button>
       <Drawer

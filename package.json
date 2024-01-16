@@ -21,7 +21,6 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
-    "react-stars": "^2.2.5",
     "sanity": "^3.24.1",
     "swiper": "^11.0.5"
   },
