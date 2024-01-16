@@ -3,6 +3,7 @@ import { ChakraProviders } from "./providers";
 import { Navbar } from "@src/components/Navbar/Navbar";
 // Import Swiper styles
 import "swiper/css";
+import { Footer } from "@src/components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "Sofisticada",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <ChakraProviders>
           <Navbar />
           {children}
+          <Footer />
         </ChakraProviders>
       </body>
     </html>

@@ -13,7 +13,7 @@ export function MobileNav() {
         alignItems="center"
         display={{ base: "flex", lg: "none" }}
         px="0.5rem"
-        py="1rem"
+        pt="1rem"
         borderBottom="1px"
         borderColor="gray.200"
       >
@@ -28,7 +28,7 @@ export function MobileNav() {
       <Box
         px="2rem"
         py="0.5rem"
-        mb="1rem"
+        mb="0.25rem"
         display={{ base: "block", lg: "none" }}
       >
         <Search />

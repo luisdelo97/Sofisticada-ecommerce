@@ -4,6 +4,7 @@ import { IProductWithoutRating } from "@src/app/datoBorrar"; //todo: remove IPro
 // import { AppContext } from "@src/context/AppContext";
 import type { IProduct } from "@src/model";
 import React, { useContext, useState } from "react";
+import { BsBagPlusFill, BsBagX } from "react-icons/bs";
 
 type IAddToCartButtonProps = {
   product: IProductWithoutRating; //todo: remove IProductWithoutRating
@@ -47,10 +48,13 @@ export const AddToCartButton = ({ product, count }: IAddToCartButtonProps) => {
         borderRadius="0.25rem"
         bgColor="white"
         size="sm"
-        w="120px"
+        w="100px"
+        rightIcon={
+          isAdded ? <BsBagX size="0.75rem" /> : <BsBagPlusFill size="0.75rem" />
+        }
         onClick={() => setIsAdded(!isAdded)}
       >
-        {isAdded ? "Added" : "Add to cart"}
+        {isAdded ? "Añadido" : "Añadir"}
       </Button>
     </>
   );

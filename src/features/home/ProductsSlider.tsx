@@ -20,17 +20,18 @@ type ProductsSlider = {
 export const ProductsSlider = ({ products }: ProductsSlider) => {
   const sliderSettings: SwiperOptions = {
     modules: [Navigation, A11y, Autoplay],
-    spaceBetween: 20,
     slidesPerView: 1,
     speed: 1000,
-    // autoplay: {
-    //   delay: 5000,
-    //   disableOnInteraction: false,
-    // },
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
     breakpoints: {
       550: {
         slidesPerView: 2,
-        spaceBetween: 10,
+      },
+      1020: {
+        slidesPerView: 3,
       },
       1300: {
         slidesPerView: 4,

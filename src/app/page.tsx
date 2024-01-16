@@ -4,7 +4,7 @@ import { FeaturedProducts } from "@src/features/home/FeaturedProducts";
 import { TopCategories } from "@src/features/home/TopCategories";
 import { ICategory, IProduct } from "@src/model";
 import { colors } from "@src/theme";
-import { provitionalCategories, provitionalProducts } from "./datoBorrar";
+import { provitionalCategories, provitionalProducts } from "./datoBorrar"; //todo: remove this
 
 export default function Home() {
   return (
@@ -12,6 +12,7 @@ export default function Home() {
       <Banner />
       <TopCategories categories={provitionalCategories} />
       <FeaturedProducts title="Lo mas popular" products={provitionalProducts} />
+      <FeaturedProducts title="Lo mas nuevo" products={provitionalProducts} />
     </main>
   );
 }

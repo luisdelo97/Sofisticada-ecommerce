@@ -41,16 +41,22 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         >
           <Flex justify="space-between" align="center">
             <Link href={`/products/${product.slug}`}>
-              <Heading size="sm">{getSubstring(product.name, 20)}</Heading>
+              <Heading size="sm" color="brand.primaryDark">
+                {getSubstring(product.name, 25)}
+              </Heading>
             </Link>
-            <Flex color="brand.primaryDark" fontWeight="bold">
-              <Text fontSize="md">$ </Text>
-              <Text fontSize="lg">{product.price}</Text>
-            </Flex>
           </Flex>
-          <Text fontSize="sm"> {getSubstring(product.description, 30)} </Text>
-
-          <AddToCartButton product={product} />
+          <Text fontSize="sm"> {getSubstring(product.description, 65)} </Text>
+          <Flex
+            justifyContent="space-between"
+            fontWeight="bold"
+            alignItems="center"
+          >
+            <AddToCartButton product={product} />
+            <Text fontSize="lg" color="brand.primary">
+              ${product.price}
+            </Text>
+          </Flex>
         </Stack>
       </CardBody>
     </Card>
