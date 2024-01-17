@@ -34,10 +34,6 @@ const items: IBreadcrumbItem[] = [
     name: "Products",
     link: "/products",
   },
-  {
-    name: "Categories",
-    link: "/categories",
-  },
 ];
 
 export const ProductDetails = ({ product }: ProductDetailsProps) => {
@@ -51,7 +47,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
           ...items,
           {
             name: product?.category.name,
-            link: `/categories/${product?.category.id}`,
+            link: `/products/${product?.category.slug}`,
           },
           {
             name: getSubstring(product?.name, 20),
@@ -131,9 +127,9 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
 
           <Stack py="2rem">
             <Box borderWidth={1} borderColor="gray.100" p="1rem">
-              <Text fontWeight="bold">Free Deliver</Text>
+              <Text fontWeight="bold">Delivery Free</Text>
               <ChakraLink textDecor="underline" color="gray.500">
-                Enter Your postal Code for Delivery Availability
+                Ingresa tu codigo postal para el delivery
               </ChakraLink>
             </Box>
 
@@ -141,7 +137,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
               <Text fontWeight="bold">Return Delivery</Text>
               <Text color="gray.500">
                 Free 30 Days Delivery Returns
-                <ChakraLink textDecor="underline"> Details</ChakraLink>
+                <ChakraLink textDecor="underline"> Detalles</ChakraLink>
               </Text>
             </Box>
           </Stack>
