@@ -1,8 +1,12 @@
-import { ProductDetails } from '@src/features/products/ProductDetails';
-import { IProduct } from '@src/model';
-import { client } from '@utils/sanity.client';
-import { groq } from 'next-sanity';
-import React from 'react';
+import {
+  IProductWithoutRating,
+  provitionalProducts,
+} from "@src/app/datoBorrar";
+import { ProductDetails } from "@src/features/products/ProductDetails";
+import { IProduct } from "@src/model";
+// import { client } from '@utils/sanity.client';
+import { groq } from "next-sanity";
+import React from "react";
 
 const query: string = groq`
     *[_type == "product" && slug.current == $slug][0] {
@@ -26,11 +30,14 @@ type Props = {
 };
 
 async function ProductDetailsPage({ params: { slug } }: Props) {
-  const product: IProduct = await client.fetch(query, { slug });
+  // const product: IProduct = await client.fetch(query, { slug });
 
+  const product: IProductWithoutRating | undefined = provitionalProducts.find(
+    (p) => p.slug === slug
+  );
   return (
     <>
-      <ProductDetails product={product} />
+      <ProductDetails product={product!} />
     </>
   );
 }

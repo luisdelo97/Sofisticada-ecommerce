@@ -19,7 +19,7 @@ export type IProduct = {
   slug: string;
   mainImage: string;
   category: ICategory;
-  gallery: string[];
+  gallery?: string[];
 };
 
 export type ICategory = {

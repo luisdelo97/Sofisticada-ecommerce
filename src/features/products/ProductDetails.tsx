@@ -8,23 +8,25 @@ import {
   GridItem,
   Heading,
   Image,
-  Link,
+  Link as ChakraLink,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { AddToWishlistButton } from "@src/components/AddToWishlistButton";
+
 import { AddToCartButton } from "@src/components/Cart/AddToCartButton";
 import { CustomBreadcrumb } from "@src/components/CustomBreadcrumb";
 import { Quantity } from "@src/components/Quantity/Quantity";
-import { Rating } from "@src/components/Rating";
-import { AppContext } from "@src/context/AppContext";
+// import { AppContext } from "@src/context/AppContext";
 import { getSubstring } from "@src/helpers";
 import { IBreadcrumbItem, IProduct } from "@src/model";
 import React, { useContext, useState } from "react";
 import { ResponsiveValue } from "@chakra-ui/react";
+import { AddToWishlistButton } from "@src/components/Wishlist/AddToWishlistButton";
+import { IProductWithoutRating } from "@src/app/datoBorrar";
+import Link from "next/link";
 
 interface ProductDetailsProps {
-  product: IProduct;
+  product: IProductWithoutRating;
 }
 
 const items: IBreadcrumbItem[] = [
@@ -40,7 +42,7 @@ const items: IBreadcrumbItem[] = [
 
 export const ProductDetails = ({ product }: ProductDetailsProps) => {
   const [quantity, setQuantity] = useState(1);
-  const { isAdded, addItem, resetItems } = useContext(AppContext);
+  // const { isAdded, addItem, resetItems } = useContext(AppContext);
 
   return (
     <>
@@ -70,7 +72,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
         <GridItem p="1rem" pos="relative">
           <AddToWishlistButton product={product} />
           <Image src={product?.mainImage} alt={product?.name} mx="auto" />
-          {/* TODO: fix product gallery */}
+          {/* //TODO: fix product gallery */}
           <Flex>
             {product?.gallery?.length !== 0 &&
               product?.gallery?.map((image, i) => (
@@ -91,7 +93,6 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
         <GridItem p="1rem">
           <Heading>{product?.name}</Heading>
           <Text my="1rem">{product?.description}</Text>
-          <Rating rating={product?.rating} />
 
           <Text fontWeight="bold" fontSize="2rem">
             ${product?.price}
@@ -101,7 +102,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
             setQuantity={(_valueAsString, valueAsNumber) =>
               setQuantity(valueAsNumber)
             }
-            disabled={isAdded("cart", product?.id)}
+            // disabled={isAdded("cart", product?.id)}
           />
           <Divider my="1rem" />
           <Box>
@@ -110,18 +111,19 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
                 variant="outline"
                 bgColor="brand.primary"
                 color="white"
-                borderRadius="50px"
+                borderRadius="0.25rem"
+                shadow="md"
                 size="sm"
-                w="160px"
+                w="130px"
                 mr="1rem"
                 my="0.5rem"
-                _hover={{ bgColor: "none" }}
-                onClick={() => {
-                  resetItems("checkout");
-                  addItem("checkout", product, quantity);
-                }}
+                _hover={{ bgColor: "brand.primaryLight" }}
+                // onClick={() => {
+                //   resetItems("checkout");
+                //   addItem("checkout", product, quantity);
+                // }}
               >
-                Buy Now
+                Comprar ahora
               </Button>
             </Link>
             <AddToCartButton product={product} count={quantity} />
@@ -130,16 +132,16 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
           <Stack py="2rem">
             <Box borderWidth={1} borderColor="gray.100" p="1rem">
               <Text fontWeight="bold">Free Deliver</Text>
-              <Link textDecor="underline" color="gray.500">
+              <ChakraLink textDecor="underline" color="gray.500">
                 Enter Your postal Code for Delivery Availability
-              </Link>
+              </ChakraLink>
             </Box>
 
             <Box borderWidth={1} borderColor="gray.100" p="1rem">
               <Text fontWeight="bold">Return Delivery</Text>
               <Text color="gray.500">
                 Free 30 Days Delivery Returns
-                <Link textDecor="underline"> Details</Link>
+                <ChakraLink textDecor="underline"> Details</ChakraLink>
               </Text>
             </Box>
           </Stack>
