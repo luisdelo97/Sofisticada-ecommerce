@@ -13,7 +13,7 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-// import { AppContext } from "@src/context/AppContext";
+import { AppContext } from "@src/context/AppContext";
 import { calculateItemsTotal } from "@src/helpers";
 import Link from "next/link";
 import { useContext, useRef } from "react";
@@ -21,23 +21,23 @@ import { BsCart4 } from "react-icons/bs";
 import { CartItem } from "./CartItem";
 
 export const Cart = () => {
-  // const {
-  //   state: { cart },
-  //   resetItems,
-  //   addItem,
-  // } = useContext(AppContext);
+  const {
+    state: { cart },
+    resetItems,
+    addItem,
+  } = useContext(AppContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef<any>();
 
-  // const handleCheckout = () => {
-  //   resetItems("checkout");
-  //   cart.forEach((cartItem) => {
-  //     addItem("checkout", cartItem, cartItem.count);
-  //   });
+  const handleCheckout = () => {
+    resetItems("checkout");
+    cart.forEach((cartItem) => {
+      addItem("checkout", cartItem, cartItem.count);
+    });
 
-  //   onClose();
-  // };
+    onClose();
+  };
 
   return (
     <>
@@ -57,7 +57,7 @@ export const Cart = () => {
         <Text mx="1" display={{ base: "none", md: "block" }}>
           Carrito
         </Text>
-        {/* {cart.length !== 0 && (
+        {cart.length !== 0 && (
           <Flex
             pos="absolute"
             top="0px"
@@ -72,7 +72,7 @@ export const Cart = () => {
           >
             {cart.length}
           </Flex>
-        )} */}
+        )}
       </Button>
       <Drawer
         isOpen={isOpen}
@@ -85,16 +85,16 @@ export const Cart = () => {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader color="brand.primary">
-            {/* Cart ( {cart.length} Items ) */}
+            Cart ( {cart.length} Items )
           </DrawerHeader>
           <DrawerBody>
-            {/* {cart.length === 0 ? (
+            {cart.length === 0 ? (
               <>Your Cart is Empty</>
             ) : (
               cart.map((item) => <CartItem key={item.id} item={item} />)
-            )} */}
+            )}
           </DrawerBody>
-          {/* {cart.length !== 0 && (
+          {cart.length !== 0 && (
             <DrawerFooter justifyContent="space-between">
               <Box>
                 <Button
@@ -122,7 +122,7 @@ export const Cart = () => {
               </Box>
               <Box fontWeight="bold">Total: $ {calculateItemsTotal(cart)}</Box>
             </DrawerFooter>
-          )} */}
+          )}
         </DrawerContent>
       </Drawer>
     </>

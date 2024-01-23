@@ -1,10 +1,10 @@
-import { Button, Grid, GridItem, Image, Text } from '@chakra-ui/react';
-import { AppContext } from '@src/context/AppContext';
-import { getSubstring } from '@src/helpers';
-import { IItem } from '@src/model';
-import Link from 'next/link';
-import { useContext } from 'react';
-import { BsCart, BsCartX, BsTrash } from 'react-icons/bs';
+import { Button, Grid, GridItem, Image, Text } from "@chakra-ui/react";
+import { AppContext } from "@src/context/AppContext";
+import { getSubstring } from "@src/helpers";
+import { IItem } from "@src/model";
+import Link from "next/link";
+import { useContext } from "react";
+import { BsCart, BsCartX, BsTrash } from "react-icons/bs";
 
 interface WishlistItemProps {
   item: IItem;
@@ -30,6 +30,7 @@ export const WishlistItem = ({ item }: WishlistItemProps) => {
             rounded="full"
             borderWidth="1px"
             borderColor="gray.300"
+            alt={item.slug}
           />
         </Link>
       </GridItem>
@@ -48,7 +49,7 @@ export const WishlistItem = ({ item }: WishlistItemProps) => {
       </GridItem>
 
       <GridItem textAlign="right">
-        {isAdded('cart', item.id) ? (
+        {isAdded("cart", item.id) ? (
           <Button
             size="xs"
             bgColor="white"
@@ -56,7 +57,7 @@ export const WishlistItem = ({ item }: WishlistItemProps) => {
             borderColor="gray.300"
             color="gray.500"
             title="Remove from Cart"
-            onClick={() => removeItem('cart', item.id)}
+            onClick={() => removeItem("cart", item.id)}
           >
             <BsCartX />
           </Button>
@@ -68,7 +69,7 @@ export const WishlistItem = ({ item }: WishlistItemProps) => {
             borderColor="brand.primary"
             color="brand.primary"
             title="Add to Cart"
-            onClick={() => addItem('cart', item)}
+            onClick={() => addItem("cart", item)}
           >
             <BsCart />
           </Button>
@@ -80,7 +81,7 @@ export const WishlistItem = ({ item }: WishlistItemProps) => {
           variant="ghost"
           colorScheme="red"
           size="xs"
-          onClick={() => removeItem('wishlist', item.id)}
+          onClick={() => removeItem("wishlist", item.id)}
         >
           <BsTrash />
         </Button>

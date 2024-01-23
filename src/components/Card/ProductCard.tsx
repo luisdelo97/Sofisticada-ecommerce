@@ -11,20 +11,19 @@ import {
 import { getSubstring } from "@src/helpers";
 import { IProduct } from "@src/model";
 import Link from "next/link";
-import { AddToWishlistButton } from "./Wishlist/AddToWishlistButton";
-import { AddToCartButton } from "./Cart/AddToCartButton";
-import { IProductWithoutRating } from "@src/app/datoBorrar"; //todo: remove IProductWithoutRating
+import { AddToWishlistButton } from "../Wishlist/AddToWishlistButton";
+import { AddToCartButton } from "./AddToCartButton";
 
 type ProductCardProps = {
-  product: IProductWithoutRating; //todo: remove IProductWithoutRating
+  product: IProduct;
 };
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <Card w="280px" pos="relative" m="0.5rem" shadow="xl">
-      <AddToWishlistButton /*product={product}*/ />
+      <AddToWishlistButton product={product} />
       <CardBody>
-        <Link href={`/products/${product.slug}`}>
+        <Link href={`/products/${product?.category.slug}/${product?.slug}`}>
           <Box
             bg={`center / contain no-repeat url(${product.mainImage})`}
             borderRadius="lg"
@@ -40,7 +39,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           borderRadius="0.25rem"
         >
           <Flex justify="space-between" align="center">
-            <Link href={`/products/${product.slug}`}>
+            <Link href={`/products/${product?.category.slug}/${product?.slug}`}>
               <Heading size="sm" color="brand.primaryDark">
                 {getSubstring(product.name, 25)}
               </Heading>
@@ -53,6 +52,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             alignItems="center"
           >
             <AddToCartButton product={product} />
+            {/* //! */}
             <Text fontSize="lg" color="brand.primary">
               ${product.price}
             </Text>

@@ -4,7 +4,7 @@ import { A11y, Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Box } from "@chakra-ui/react";
 import { CSSProperties } from "react";
-import { ProductCard } from "../../components/ProductCard";
+import { ProductCard } from "../../components/Card/ProductCard";
 import { SwiperNavButtons } from "./SwiperNavButtons";
 import { IProduct } from "@src/model";
 import { IProductWithoutRating } from "@src/app/datoBorrar";

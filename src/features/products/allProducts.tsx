@@ -1,17 +1,17 @@
 "use client";
 import { Button, Flex } from "@chakra-ui/react";
-// import { CustomBreadcrumb } from "@src/components/CustomBreadcrumb";
-import { ProductCard } from "@src/components/ProductCard";
+import { CustomBreadcrumb } from "@src/components/CustomBreadcrumb";
+import { ProductCard } from "@src/components/Card/ProductCard";
 import { IBreadcrumbItem, IProduct } from "@src/model";
 import React, { useState } from "react";
 import { usePagination } from "@mantine/hooks";
 import { Hero } from "@src/components/Hero/Hero";
 import { IProductWithoutRating } from "@src/app/datoBorrar";
 
-interface AllProductsProps {
+type AllProductsProps = {
   products: IProductWithoutRating[];
   breadcrumbItems?: IBreadcrumbItem[];
-}
+};
 
 const itemsPerPage = 10;
 
@@ -36,7 +36,7 @@ export const AllProducts = ({
 
   return (
     <>
-      {/* <CustomBreadcrumb items={breadcrumbItems} /> */}
+      <CustomBreadcrumb items={breadcrumbItems} />
       <Flex
         flexWrap="wrap"
         w={{ base: "100%", lg: "90%" }}

@@ -6,16 +6,16 @@ import {
   Image,
   Input,
   Text,
-} from '@chakra-ui/react';
-import { AppContext } from '@src/context/AppContext';
-import { IItem } from '@src/model';
-import Link from 'next/link';
-import { useContext } from 'react';
-import { BsTrash } from 'react-icons/bs';
+} from "@chakra-ui/react";
+import { AppContext } from "@src/context/AppContext";
+import { IItem } from "@src/model";
+import Link from "next/link";
+import { useContext } from "react";
+import { BsTrash } from "react-icons/bs";
 
-interface CartItemProps {
+type CartItemProps = {
   item: IItem;
-}
+};
 
 export const CartItem = ({ item }: CartItemProps) => {
   const { increaseCount, decreaseCount, removeItem } = useContext(AppContext);
@@ -23,7 +23,7 @@ export const CartItem = ({ item }: CartItemProps) => {
   return (
     <Grid
       alignItems="center"
-      templateColumns={{ base: 'repeat(6, 1fr)', lg: 'repeat(8, 1fr)' }}
+      templateColumns={{ base: "repeat(6, 1fr)", lg: "repeat(8, 1fr)" }}
       borderBottomWidth="1px"
       borderBottomColor="gray.200"
       my="2"
@@ -32,6 +32,7 @@ export const CartItem = ({ item }: CartItemProps) => {
         <Link href={`/products/${item.slug}`}>
           <Image
             src={item.mainImage}
+            alt={item.slug}
             boxSize="40px"
             rounded="full"
             borderWidth="1px"
@@ -46,7 +47,7 @@ export const CartItem = ({ item }: CartItemProps) => {
       </GridItem>
       <GridItem colSpan={{ base: 3, lg: 2 }} justifyContent="flex-end">
         <HStack my="0.5rem" justifyContent="flex-end">
-          <Button onClick={() => decreaseCount('cart', item.id)}>-</Button>
+          <Button onClick={() => decreaseCount("cart", item.id)}>-</Button>
           <Input
             type="number"
             value={item.count}
@@ -56,7 +57,7 @@ export const CartItem = ({ item }: CartItemProps) => {
             min="1"
             max="20"
           />
-          <Button onClick={() => increaseCount('cart', item.id)}>+</Button>
+          <Button onClick={() => increaseCount("cart", item.id)}>+</Button>
         </HStack>
       </GridItem>
       <GridItem textAlign="right" colSpan={{ base: 2, lg: 1 }}>
@@ -66,7 +67,7 @@ export const CartItem = ({ item }: CartItemProps) => {
         <Button
           variant="ghost"
           colorScheme="red"
-          onClick={() => removeItem('cart', item.id)}
+          onClick={() => removeItem("cart", item.id)}
         >
           <BsTrash />
         </Button>

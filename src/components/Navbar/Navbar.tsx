@@ -3,6 +3,8 @@ import { DesktopNav } from "./DesktopNav";
 import { MobileNav } from "./MobileNav";
 
 export const Navbar = () => {
+  console.log("navbar");
+
   return (
     <>
       <Box className="navbar-wrapper" h="120px">

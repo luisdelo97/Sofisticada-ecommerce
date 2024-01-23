@@ -13,20 +13,18 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-import { AddToCartButton } from "@src/components/Cart/AddToCartButton";
+import { AddToCartButton } from "@src/components/Card/AddToCartButton";
 import { CustomBreadcrumb } from "@src/components/CustomBreadcrumb";
 import { Quantity } from "@src/components/Quantity/Quantity";
-// import { AppContext } from "@src/context/AppContext";
+import { AppContext } from "@src/context/AppContext";
 import { getSubstring } from "@src/helpers";
 import { IBreadcrumbItem, IProduct } from "@src/model";
 import React, { useContext, useState } from "react";
-import { ResponsiveValue } from "@chakra-ui/react";
 import { AddToWishlistButton } from "@src/components/Wishlist/AddToWishlistButton";
-import { IProductWithoutRating } from "@src/app/datoBorrar";
 import Link from "next/link";
 
 interface ProductDetailsProps {
-  product: IProductWithoutRating;
+  product: IProduct;
 }
 
 const items: IBreadcrumbItem[] = [
@@ -38,7 +36,10 @@ const items: IBreadcrumbItem[] = [
 
 export const ProductDetails = ({ product }: ProductDetailsProps) => {
   const [quantity, setQuantity] = useState(1);
-  // const { isAdded, addItem, resetItems } = useContext(AppContext);
+  const { isAdded, addItem, resetItems } = useContext(AppContext);
+
+  // console.log(state.cart);
+  // console.log(quantity);
 
   return (
     <>
@@ -51,7 +52,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
           },
           {
             name: getSubstring(product?.name, 20),
-            link: `/products/${product?.slug}`,
+            link: `/products/${product?.category.slug}/${product?.slug}`,
           },
         ]}
       />
@@ -69,7 +70,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
           <AddToWishlistButton product={product} />
           <Image src={product?.mainImage} alt={product?.name} mx="auto" />
           {/* //TODO: fix product gallery */}
-          <Flex>
+          {/* <Flex>
             {product?.gallery?.length !== 0 &&
               product?.gallery?.map((image, i) => (
                 <Image
@@ -84,7 +85,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
                   borderColor="gray.100"
                 />
               ))}
-          </Flex>
+          </Flex> */}
         </GridItem>
         <GridItem p="1rem">
           <Heading>{product?.name}</Heading>
@@ -98,7 +99,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
             setQuantity={(_valueAsString, valueAsNumber) =>
               setQuantity(valueAsNumber)
             }
-            // disabled={isAdded("cart", product?.id)}
+            disabled={isAdded("cart", product?.id)}
           />
           <Divider my="1rem" />
           <Box>
@@ -114,10 +115,10 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
                 mr="1rem"
                 my="0.5rem"
                 _hover={{ bgColor: "brand.primaryLight" }}
-                // onClick={() => {
-                //   resetItems("checkout");
-                //   addItem("checkout", product, quantity);
-                // }}
+                onClick={() => {
+                  resetItems("checkout");
+                  addItem("checkout", product, quantity);
+                }}
               >
                 Comprar ahora
               </Button>

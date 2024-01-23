@@ -3,43 +3,37 @@ import { ICategory, IProduct } from "@src/model";
 //todo: remove this once we connect, from here
 export const provitionalCategories: ICategory[] = [
   {
-    id: "1",
+    id: "1a",
     name: "Crochet",
     slug: "crochet",
-    image: "/crochet.png",
+    image: "/store.png",
   },
   {
-    id: "2",
+    id: "2a",
     name: "Bolsas",
     slug: "bolsas",
     image: "/bolsa.png",
   },
   {
-    id: "3",
+    id: "3a",
     name: "Gorras",
     slug: "gorras",
     image: "/gorra.png",
   },
   {
-    id: "4",
+    id: "4a",
     name: "Bufandas",
     slug: "bufandas",
     image: "/vestido.png",
   },
 ];
-export type IProductWithoutRating = Omit<IProduct, "rating">;
-export const provitionalProducts: IProductWithoutRating[] = [
+export const provitionalProducts: IProduct[] = [
   {
     id: "1",
     name: "Crochet Pasion Guarani",
     description:
       "El vibrante tono rojo del crochet evoca la pasión y el espíritu vibrante de Paraguay, mientras que los detalles en contraste de color crema en las mangasofrecen un encanto delicado y una sensación vintage. Cada puntada es testimonio de la atención al detalle y la habilidad artística, asegurando no solo un ajuste cómodo sino también un estilo único. Ideal para los días soleados y las escapadas playeras, este conjunto es una pieza distintiva que celebra la belleza de las tradiciones artesanales paraguayas.",
-    category: {
-      id: "1",
-      name: "Crochet",
-      image: "/crochet.png",
-      slug: "crochet",
-    },
+    category: provitionalCategories[0],
     mainImage: "/crochet.png",
     price: 60,
     slug: "blusa-blanca",

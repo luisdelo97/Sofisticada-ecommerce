@@ -1,21 +1,17 @@
-export type ItemKey = "cart" | "wishlist" | "checkout";
-
 export type NavItem = {
   label: string;
   href: string;
 };
 
-export type IRating = {
-  rate: number;
-  count: number;
+export type IBreadcrumbItem = {
+  name: string;
+  link: string;
 };
-
 export type IProduct = {
   id: string;
   name: string;
   description: string;
   price: number;
-  rating: IRating;
   slug: string;
   mainImage: string;
   category: ICategory;
@@ -36,21 +32,16 @@ export type IFeaturedItems = {
   trendingProducts: IProduct[];
 };
 
+export type IItem = IProduct & {
+  count: number;
+};
+
 export type IState = {
   cart: IItem[];
   wishlist: IItem[];
   checkout: IItem[];
 };
-
-export type IItem = IProduct & {
-  count: number;
-};
-
-export type IBreadcrumbItem = {
-  name: string;
-  link: string;
-};
-
+export type ItemKey = "cart" | "wishlist" | "checkout";
 export type IContext = {
   state: IState;
   addItem: (key: ItemKey, product: IProduct, count?: number) => void;

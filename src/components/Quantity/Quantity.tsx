@@ -1,14 +1,14 @@
-import { Button, HStack, Input, useNumberInput } from '@chakra-ui/react';
-import React from 'react';
+import { Button, HStack, Input, useNumberInput } from "@chakra-ui/react";
+import React from "react";
 
-interface IQuantityProps {
+type IQuantityProps = {
   step?: number;
   defaultValue?: number;
   min?: number;
   max?: number;
   disabled?: boolean;
   setQuantity: (valueAsString: string, valueAsNumber: number) => void;
-}
+};
 
 export const Quantity = ({
   step = 1,

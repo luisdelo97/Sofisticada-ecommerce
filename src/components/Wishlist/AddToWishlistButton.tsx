@@ -1,46 +1,17 @@
 import { Button } from "@chakra-ui/react";
-import { IProductWithoutRating } from "@src/app/datoBorrar";
-// import { AppContext } from "@src/context/AppContext";
+import { AppContext } from "@src/context/AppContext";
 import { IProduct } from "@src/model";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 
-interface IAddToWishlistButtonProps {
-  product: IProductWithoutRating;
-}
+type IAddToWishlistButtonProps = {
+  product: IProduct;
+};
 
 export const AddToWishlistButton = ({ product }: IAddToWishlistButtonProps) => {
-  // const { addItem, removeItem, isAdded } = useContext(AppContext);
-  const [isLiked, setIsLiked] = useState(false);
+  const { addItem, removeItem, isAdded } = useContext(AppContext);
   return (
     <>
-      {/* {isAdded("wishlist", product?.id) ? (
-        <Button
-          pos="absolute"
-          variant="ghost"
-          bgColor="transparent"
-          color="red.400"
-          _hover={{ bgColor: "transparent" }}
-          rounded="full"
-          title="Remove from Wishlist"
-          onClick={() => removeItem("wishlist", product?.id)}
-        >
-          <BsHeartFill />
-        </Button>
-      ) : (
-        <Button
-          pos="absolute"
-          variant="ghost"
-          bgColor="transparent"
-          color="red.400"
-          _hover={{ bgColor: "transparent" }}
-          rounded="full"
-          title="Add to Wishlist"
-          onClick={() => addItem("wishlist", product)}
-        >
-          <BsHeart />
-        </Button>
-      )} */}
       <Button
         pos="absolute"
         variant="ghost"
@@ -48,9 +19,13 @@ export const AddToWishlistButton = ({ product }: IAddToWishlistButtonProps) => {
         _hover={{ bgColor: "transparent" }}
         rounded="full"
         title="Add to Wishlist"
-        onClick={() => setIsLiked(!isLiked)}
+        onClick={
+          isAdded("wishlist", product?.id)
+            ? () => removeItem("wishlist", product?.id)
+            : () => addItem("wishlist", product)
+        }
       >
-        {isLiked ? <BsHeartFill /> : <BsHeart />}
+        {isAdded("wishlist", product?.id) ? <BsHeartFill /> : <BsHeart />}
       </Button>
     </>
   );

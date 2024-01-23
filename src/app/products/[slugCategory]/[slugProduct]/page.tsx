@@ -1,7 +1,5 @@
-import {
-  IProductWithoutRating,
-  provitionalProducts,
-} from "@src/app/datoBorrar";
+// "use client";
+import { provitionalProducts } from "@src/app/datoBorrar";
 import { ProductDetails } from "@src/features/products/ProductDetails";
 import { IProduct } from "@src/model";
 // import { client } from '@utils/sanity.client';
@@ -25,19 +23,20 @@ const query: string = groq`
 
 type Props = {
   params: {
-    slug: string;
+    slugProduct: string;
   };
 };
 
-async function ProductDetailsPage({ params: { slug } }: Props) {
+function ProductDetailsPage({ params: { slugProduct } }: Props) {
   // const product: IProduct = await client.fetch(query, { slug });
+  // console.log("page details");
 
-  const product: IProductWithoutRating | undefined = provitionalProducts.find(
-    (p) => p.slug === slug
-  );
+  const product: IProduct | undefined = provitionalProducts.find(
+    (p) => p.slug === slugProduct
+  )!;
   return (
     <>
-      <ProductDetails product={product!} />
+      <ProductDetails product={product} />
     </>
   );
 }
