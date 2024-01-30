@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import {
   Box,
   Button,
@@ -16,10 +16,10 @@ import {
   RadioGroup,
   Stack,
   Text,
-} from '@chakra-ui/react';
-import { AppContext } from '@src/context/AppContext';
-import { calculateItemsTotal, formatPrice, getSubstring } from '@src/helpers';
-import React, { useContext, useEffect, useState } from 'react';
+} from "@chakra-ui/react";
+import { AppContext } from "@src/context/AppContext";
+import { calculateItemsTotal, formatPrice, getSubstring } from "@src/helpers";
+import React, { useContext, useEffect, useState } from "react";
 
 export const Checkout = () => {
   const [subTotal, setSubTotal] = useState<number>(0);
@@ -35,17 +35,18 @@ export const Checkout = () => {
     setSubTotal(subTotal);
     setTax(tax);
   }, [checkout]);
+
   return (
     <Flex
-      w={{ base: '100%', lg: '90%' }}
+      w={{ base: "100%", lg: "90%" }}
       mx="auto"
-      flexDir={{ base: 'column', lg: 'row' }}
+      flexDir={{ base: "column", lg: "row" }}
       gap="2rem"
     >
-      <Stack spacing={10} w={{ base: '100%', lg: '60%' }}>
+      <Stack spacing={10} w={{ base: "100%", lg: "60%" }}>
         <Card borderWidth="1px" borderColor="gray.200" shadow="none">
           <CardHeader>
-            <Heading size="md">Review Items</Heading>
+            <Heading size="md">Resumen de compra</Heading>
           </CardHeader>
 
           <CardBody>
@@ -57,26 +58,27 @@ export const Checkout = () => {
                       src={item.mainImage}
                       boxSize="100px"
                       bgSize="contain"
+                      alt={item.slug}
                     />
                     <Box mx="1rem">
                       <Text
                         fontWeight="bold"
-                        fontSize={{ base: 'sm', lg: 'lg' }}
+                        fontSize={{ base: "sm", lg: "lg" }}
                         maxW="500px"
                       >
                         {item.name}
                       </Text>
                       <Text color="gray.500">
-                        {getSubstring(item.description, 50)}
+                        {getSubstring(item.description, 70)}
                       </Text>
                     </Box>
                   </Flex>
                   <Box textAlign="right">
-                    <Text fontWeight="bold" fontSize={{ base: 'md', lg: 'lg' }}>
+                    <Text fontWeight="bold" fontSize={{ base: "md", lg: "lg" }}>
                       ${formatPrice(item.price)}
                     </Text>
-                    <Text fontSize={{ base: 'sm', lg: 'md' }}>
-                      Quantity: {item.count}
+                    <Text fontSize={{ base: "sm", lg: "md" }}>
+                      Cantidad: {item.count}
                     </Text>
                   </Box>
                 </Flex>
@@ -87,76 +89,63 @@ export const Checkout = () => {
 
         <Card borderWidth="1px" borderColor="gray.200" shadow="none">
           <CardHeader>
-            <Heading size="md">Delivery Information</Heading>
+            <Heading size="md">Ingrese sus datos</Heading>
           </CardHeader>
 
           <CardBody>
             <Stack spacing="2rem">
               <Box>
-                <FormLabel>Full Name</FormLabel>
-                <Input type="text" placeholder="Full name" />
+                <FormLabel>Nombre Completo</FormLabel>
+                <Input type="text" placeholder="nombre..." />
               </Box>
 
               <Box>
-                <FormLabel>Address</FormLabel>
-                <Input type="text" placeholder="address" />
+                <FormLabel>Direccion</FormLabel>
+                <Input type="text" placeholder="direccion..." />
               </Box>
 
               <Box>
-                <FormLabel>Phone</FormLabel>
-                <Input type="text" placeholder="phone number" />
+                <FormLabel>Telefono</FormLabel>
+                <Input type="text" placeholder="telefono.." />
               </Box>
 
               <Box>
                 <FormLabel>Email</FormLabel>
-                <Input type="email" placeholder="email" />
+                <Input type="email" placeholder="correo electronico..." />
               </Box>
             </Stack>
           </CardBody>
         </Card>
       </Stack>
 
-      <Box w={{ base: '100%', lg: '40%' }}>
+      <Box w={{ base: "100%", lg: "40%" }}>
         <Card borderWidth="1px" borderColor="gray.200" shadow="none" p="2rem">
           <CardHeader>
-            <Heading size="md">Payment Details</Heading>
+            <Heading size="md">Detalles de Pago</Heading>
           </CardHeader>
 
           <CardBody>
             <Stack spacing="2rem">
-              <Flex>
-                <Input
-                  type="text"
-                  placeholder="Enter Coupon Code"
-                  rounded="full"
-                />
-                <Button
-                  bgColor="brand.primary"
-                  color="white"
-                  rounded="full"
-                  ml="-40px"
-                  px="2rem"
-                  _hover={{
-                    bgColor: 'brand.primaryDark',
-                  }}
-                  _active={{
-                    bgColor: 'brand.primaryDark',
-                  }}
-                >
-                  Apply Coupon
-                </Button>
-              </Flex>
+              <Heading size="xs" my="1rem">
+                Opciones de envio
+              </Heading>
+              <RadioGroup>
+                <Stack>
+                  <Radio value="cashOnDelivery">Delivery</Radio>
+                  <Radio value="momo">Pasar a buscar</Radio>
+                </Stack>
+              </RadioGroup>
               <Divider mt="1rem" />
 
               <Box>
                 <Heading size="xs" my="1rem">
-                  Payment Option
+                  Opciones de Pago
                 </Heading>
                 <RadioGroup>
                   <Stack>
-                    <Radio value="cashOnDelivery">Cash On Delivery</Radio>
-                    <Radio value="momo">Mobile Money Payment</Radio>
-                    <Radio value="3">Credit Card (Master/Visa)</Radio>
+                    <Radio value="cashOnDelivery">Transferencia</Radio>
+                    <Radio value="momo">Efectivo</Radio>
+                    <Radio value="3">Targeta con Pos (Master/Visa)</Radio>
                   </Stack>
                 </RadioGroup>
               </Box>
@@ -180,7 +169,7 @@ export const Checkout = () => {
               </Flex>
 
               <Flex justify="space-between" align="center" my="1rem">
-                <Text fontWeight="bold">Shipping Cost</Text>
+                <Text fontWeight="bold">Costo Delivery</Text>
                 <Text fontWeight="bold">-${formatPrice(0)}</Text>
               </Flex>
               <Divider />
@@ -196,13 +185,13 @@ export const Checkout = () => {
               w="100%"
               rounded="full"
               _hover={{
-                bgColor: 'brand.primaryDark',
+                bgColor: "brand.primaryDark",
               }}
               _active={{
-                bgColor: 'brand.primaryDark',
+                bgColor: "brand.primaryDark",
               }}
             >
-              Pay ${formatPrice(subTotal)}
+              Solicitar compra! ${formatPrice(subTotal)}
             </Button>
           </CardBody>
         </Card>
