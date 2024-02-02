@@ -1,12 +1,12 @@
 export const GalleryImageSchema = {
-  name: 'galleryImage',
-  title: 'Gallery Image',
-  type: 'image',
+  name: "galleryImage",
+  title: "Galeria de imagenes",
+  type: "image",
   fields: [
     {
-      name: 'caption',
-      title: 'Caption',
-      type: 'string',
+      name: "caption",
+      title: "Caption",
+      type: "string",
       options: {
         isHightLight: true,
       },
@@ -15,4 +15,4 @@ export const GalleryImageSchema = {
   options: {
     hotspot: true,
   },
-}
+};

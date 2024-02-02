@@ -1,49 +1,38 @@
 export const FeaturedProductsAndCategories = {
-  name: 'featuredProductsAndCategories',
-  title: 'Featured',
-  type: 'document',
+  name: "featuredProductsAndCategories",
+  title: "Destacados",
+  type: "document",
   fields: [
     {
-      name: 'topCategories',
-      title: 'Top Categories',
-      type: 'array',
+      name: "topCategories",
+      title: "Top Categorias",
+      type: "array",
       of: [
         {
-          type: 'reference',
-          to: [{ type: 'category' }],
+          type: "reference",
+          to: [{ type: "category" }],
         },
       ],
     },
     {
-      name: 'mostSellingProducts',
-      title: 'Most Selling Products',
-      type: 'array',
+      name: "newProducts",
+      title: "Lo mas nuevo",
+      type: "array",
       of: [
         {
-          type: 'reference',
-          to: [{ type: 'product' }],
+          type: "reference",
+          to: [{ type: "product" }],
         },
       ],
     },
     {
-      name: 'bestDeals',
-      title: 'Best Deals',
-      type: 'array',
+      name: "popular",
+      title: "Lo mas popular",
+      type: "array",
       of: [
         {
-          type: 'reference',
-          to: [{ type: 'product' }],
-        },
-      ],
-    },
-    {
-      name: 'trendingProducts',
-      title: 'Trending Products',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'product' }],
+          type: "reference",
+          to: [{ type: "product" }],
         },
       ],
     },

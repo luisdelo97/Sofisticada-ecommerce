@@ -1,12 +1,11 @@
 import { visionTool } from "@sanity/vision";
 import { StudioNavbar } from "./src/components/StudioNavbar";
-import { Config } from "sanity";
-// import { deskTool } from "sanity/desk";
+import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { schemaTypes } from "./schemas";
 import { msTheme } from "./src/theme";
 
-export const config: Config = {
+const config = defineConfig({
   name: "default",
   title: "Sofisticada",
   basePath: "/studio",
@@ -27,4 +26,6 @@ export const config: Config = {
       navbar: StudioNavbar,
     },
   },
-};
+});
+
+export default config;

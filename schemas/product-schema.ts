@@ -1,11 +1,11 @@
 export const ProductSchema = {
   name: "product",
-  title: "Product",
+  title: "Producto",
   type: "document",
   fields: [
     {
       name: "name",
-      title: "Name",
+      title: "Nombre",
       type: "string",
       description: "Name of Product",
     },
@@ -20,23 +20,23 @@ export const ProductSchema = {
     },
     {
       name: "price",
-      title: "Price",
+      title: "Precio",
       type: "number",
     },
     {
       name: "description",
-      title: "Description",
+      title: "Descripcion",
       type: "text",
     },
     {
       name: "category",
-      title: "Product Category",
+      title: "Categoria del producto",
       type: "reference",
       to: [{ type: "category" }],
     },
     {
       name: "mainImage",
-      title: "Main Image",
+      title: "Imagen principal",
       type: "image",
       options: {
         hotspot: true,
@@ -44,7 +44,7 @@ export const ProductSchema = {
     },
     {
       name: "gallery",
-      title: "Gallery Images",
+      title: "Galeria de imagenes",
       type: "array",
       of: [{ type: "galleryImage" }],
       options: {

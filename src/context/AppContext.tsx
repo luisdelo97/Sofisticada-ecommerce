@@ -18,7 +18,6 @@ const initialState: IState = {
 const AppContextProvider: React.FC<IAppContextProviderProps> = ({
   children,
 }) => {
-  console.log("context");
   const [state, setState] = useLocalStorage<IState>({
     key: "ms-buy",
     defaultValue: initialState,

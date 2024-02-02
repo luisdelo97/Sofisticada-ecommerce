@@ -15,9 +15,9 @@ export const theme = extendTheme({ colors });
 const props = {
   "--ms-white": "#fff",
   "--ms-black": "#1a1a1a",
-  "--brand-primary": colors.brand.primary,
-  "--brand-primary-light": colors.brand.primaryLight,
-  "--brand-primary-dark": colors.brand.primaryDark,
+  "--brand-primary": "#e38763",
+  "--brand-primary-light": "#eba98e",
+  "--brand-primary-dark": "#6c2c13",
   "--ms-gray": "#666666",
 };
 
