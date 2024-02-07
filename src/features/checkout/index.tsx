@@ -23,7 +23,7 @@ import React, { useContext, useEffect, useState } from "react";
 
 export const Checkout = () => {
   const [subTotal, setSubTotal] = useState<number>(0);
-  const [tax, setTax] = useState<number>(0);
+  const [shipment, setShipment] = useState("buscar");
 
   const {
     state: { checkout },
@@ -31,9 +31,7 @@ export const Checkout = () => {
 
   useEffect(() => {
     const subTotal = calculateItemsTotal(checkout);
-    const tax = 0.1 * subTotal;
     setSubTotal(subTotal);
-    setTax(tax);
   }, [checkout]);
 
   return (
@@ -77,8 +75,11 @@ export const Checkout = () => {
                     <Text fontWeight="bold" fontSize={{ base: "md", lg: "lg" }}>
                       ${formatPrice(item.price)}
                     </Text>
-                    <Text fontSize={{ base: "sm", lg: "md" }}>
-                      Cantidad: {item.count}
+                    <Text
+                      fontSize={{ base: "sm", lg: "md" }}
+                      color="brand.primary"
+                    >
+                      Cant: {item.count}
                     </Text>
                   </Box>
                 </Flex>
@@ -96,22 +97,26 @@ export const Checkout = () => {
             <Stack spacing="2rem">
               <Box>
                 <FormLabel>Nombre Completo</FormLabel>
-                <Input type="text" placeholder="nombre..." />
+                <Input type="text" placeholder="Sofia Segovia..." required />
               </Box>
 
               <Box>
                 <FormLabel>Direccion</FormLabel>
-                <Input type="text" placeholder="direccion..." />
+                <Input
+                  type="text"
+                  placeholder="Azara c/ Brasil 1456..."
+                  required
+                />
               </Box>
 
               <Box>
                 <FormLabel>Telefono</FormLabel>
-                <Input type="text" placeholder="telefono.." />
+                <Input type="text" placeholder="0981541629..." required />
               </Box>
 
               <Box>
                 <FormLabel>Email</FormLabel>
-                <Input type="email" placeholder="correo electronico..." />
+                <Input type="email" placeholder="sofia@gmail.com..." required />
               </Box>
             </Stack>
           </CardBody>
@@ -125,16 +130,17 @@ export const Checkout = () => {
           </CardHeader>
 
           <CardBody>
-            <Stack spacing="2rem">
+            <Stack spacing="1.5rem">
               <Heading size="xs" my="1rem">
                 Opciones de envio
               </Heading>
-              <RadioGroup>
+              <RadioGroup onChange={setShipment} value={shipment}>
                 <Stack>
-                  <Radio value="cashOnDelivery">Delivery</Radio>
-                  <Radio value="momo">Pasar a buscar</Radio>
+                  <Radio value="delivery">Delivery</Radio>
+                  <Radio value="buscar">Pasar a buscar</Radio>
                 </Stack>
               </RadioGroup>
+
               <Divider mt="1rem" />
 
               <Box>
@@ -143,14 +149,14 @@ export const Checkout = () => {
                 </Heading>
                 <RadioGroup>
                   <Stack>
-                    <Radio value="cashOnDelivery">Transferencia</Radio>
-                    <Radio value="momo">Efectivo</Radio>
-                    <Radio value="3">Targeta con Pos (Master/Visa)</Radio>
+                    <Radio value="transferencia">Transferencia</Radio>
+                    <Radio value="efectivo">Efectivo</Radio>
+                    <Radio value="tarjeta">Tarjeta(Master/Visa)</Radio>
                   </Stack>
                 </RadioGroup>
               </Box>
             </Stack>
-            <Divider mt="1rem" />
+            <Divider mt="1rem" mb="2rem" />
 
             <Box>
               <Flex justify="space-between" align="center" my="1rem">
@@ -158,24 +164,19 @@ export const Checkout = () => {
                 <Text fontWeight="bold">${formatPrice(subTotal)}</Text>
               </Flex>
 
-              <Flex justify="space-between" align="center" my="1rem">
-                <Text fontWeight="bold">Tax(10%)</Text>
-                <Text fontWeight="bold">${formatPrice(tax)}</Text>
-              </Flex>
-
-              <Flex justify="space-between" align="center" my="1rem">
-                <Text fontWeight="bold">Coupon Discount</Text>
-                <Text fontWeight="bold">-${formatPrice(tax)}</Text>
-              </Flex>
-
-              <Flex justify="space-between" align="center" my="1rem">
-                <Text fontWeight="bold">Costo Delivery</Text>
-                <Text fontWeight="bold">-${formatPrice(0)}</Text>
-              </Flex>
+              {shipment === "delivery" && (
+                <Flex justify="space-between" align="center" my="1rem">
+                  <Text fontWeight="bold">Costo Delivery</Text>
+                  <Text fontWeight="bold">Depen. de la zona</Text>
+                </Flex>
+              )}
               <Divider />
               <Flex justify="space-between" align="center" my="1rem">
                 <Text fontWeight="bold">Total</Text>
-                <Text fontWeight="bold">${formatPrice(subTotal)}</Text>
+                <Text fontWeight="bold">
+                  ${formatPrice(subTotal)}
+                  {shipment === "delivery" && "+ deliv"}
+                </Text>
               </Flex>
             </Box>
 
@@ -191,7 +192,7 @@ export const Checkout = () => {
                 bgColor: "brand.primaryDark",
               }}
             >
-              Solicitar compra! ${formatPrice(subTotal)}
+              Solicitar compra!
             </Button>
           </CardBody>
         </Card>

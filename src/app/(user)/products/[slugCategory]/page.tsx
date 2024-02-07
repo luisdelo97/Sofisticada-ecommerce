@@ -1,18 +1,19 @@
-import { provitionalProducts } from "@src/app/datoBorrar";
 import { Hero } from "@src/components/Hero/Hero";
 import { AllProducts } from "@src/features/products/AllProducts";
-import { IBreadcrumbItem, ICategory, IProduct } from "@src/model";
-// import { client } from '@utils/sanity.client';
+import { IBreadcrumbItem, IProduct } from "@src/model";
+import { client } from "@utils/sanity.client";
 import { groq } from "next-sanity";
 import React from "react";
 
 const query: string = groq`
-    *[_type == "product" && references($id)] {
-        ...,
-        "id": _id,
-        "slug": slug.current,
-        "mainImage": mainImage.asset->url,
-        category->{ name, "image": image.asset->url  },
+    *[_type == "product" && category->slug.current == $slugCategory] {
+      "id": _id,
+            name,
+            description,
+            price,
+            "slug": slug.current,
+            "mainImage": mainImage.asset->url,
+            category->{"id": _id,name,"slug": slug.current,"image": image.asset->url},
     }
 `;
 
@@ -31,22 +32,20 @@ const items: IBreadcrumbItem[] = [
   },
 ];
 
-function CategoryPage({ params: { slugCategory } }: Props) {
-  // const products: IProduct[] = await client.fetch(query, { id });
-  const products: IProduct[] | undefined = provitionalProducts.filter(
-    (p) => p.category.slug === slugCategory
-  )!; //todo: remove this
+async function CategoryPage({ params: { slugCategory } }: Props) {
+  const products: IProduct[] = await client.fetch(query, { slugCategory });
 
   return (
     <>
       <Hero
         heading={products[0]?.category?.name}
-        description={`Best and Affordable ${products[0]?.category?.name}`}
+        description={`${products[0]?.category?.name} para vos!`}
         imageUrl={products[0]?.category?.image}
-        btnLabel="View All Categories"
-        btnLink="#"
+        btnLabel={`Ver ${products[0]?.category?.name}`}
+        btnLink="#productos"
       />
       <AllProducts
+        id="productos"
         products={products}
         breadcrumbItems={[
           ...items,

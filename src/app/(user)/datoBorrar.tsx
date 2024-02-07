@@ -80,7 +80,7 @@ export const provitionalProducts: IProduct[] = [
       id: "4",
       name: "Vestido",
       image: "/vestido.png",
-      slug: "vestido",
+      slug: "vestidos",
     },
     mainImage: "/vestido.png",
     price: 40,

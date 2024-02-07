@@ -13,9 +13,9 @@ import { ICategory } from "@src/model";
 import Image from "next/image";
 import Link from "next/link";
 
-interface TopCategoriesProps {
+type TopCategoriesProps = {
   categories: ICategory[];
-}
+};
 
 export const TopCategories = ({ categories }: TopCategoriesProps) => {
   return (
@@ -36,19 +36,6 @@ export const TopCategories = ({ categories }: TopCategoriesProps) => {
           </GridItem>
         ))}
       </Grid>
-
-      <Link href="/categories">
-        <Button
-          bgColor="white"
-          variant="outline"
-          borderColor="brand.primary"
-          color="brand.primary"
-          rounded="full"
-          my="1rem"
-        >
-          Busca por categorias
-        </Button>
-      </Link>
     </Box>
   );
 };
@@ -58,7 +45,7 @@ interface TopCategoryCardProps {
 }
 
 const TopCategoryCard = ({ category }: TopCategoryCardProps) => (
-  <Link href={`/categories/${category.id}`}>
+  <Link href={`/products/${category.slug}`}>
     <Card
       direction="row"
       align="center"

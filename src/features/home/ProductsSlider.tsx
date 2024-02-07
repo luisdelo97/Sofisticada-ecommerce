@@ -7,7 +7,6 @@ import { CSSProperties } from "react";
 import { ProductCard } from "../../components/Card/ProductCard";
 import { SwiperNavButtons } from "./SwiperNavButtons";
 import { IProduct } from "@src/model";
-import { IProductWithoutRating } from "@src/app/datoBorrar";
 
 const slideStyles: CSSProperties = {
   boxSizing: "border-box",
@@ -15,7 +14,7 @@ const slideStyles: CSSProperties = {
 };
 
 type ProductsSlider = {
-  products: IProductWithoutRating[];
+  products: IProduct[];
 };
 export const ProductsSlider = ({ products }: ProductsSlider) => {
   const sliderSettings: SwiperOptions = {

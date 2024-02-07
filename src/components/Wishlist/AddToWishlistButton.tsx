@@ -15,6 +15,8 @@ export const AddToWishlistButton = ({ product }: IAddToWishlistButtonProps) => {
       <Button
         pos="absolute"
         variant="ghost"
+        top={0}
+        left={0}
         color="red.400"
         _hover={{ bgColor: "transparent" }}
         rounded="full"

@@ -4,11 +4,10 @@ import { SectionHeading } from "@src/components/SectionHeading";
 import type { IProduct } from "@src/model";
 import React from "react";
 import { ProductsSlider } from "./ProductsSlider";
-import { IProductWithoutRating } from "@src/app/datoBorrar";
 
 type FeaturedProducts = {
   title: string;
-  products: IProductWithoutRating[]; //todo: remove IProductWithoutRating
+  products: IProduct[];
 };
 
 export const FeaturedProducts = ({ title, products }: FeaturedProducts) => {

@@ -5,24 +5,23 @@ import { ProductCard } from "@src/components/Card/ProductCard";
 import { IBreadcrumbItem, IProduct } from "@src/model";
 import React, { useState } from "react";
 import { usePagination } from "@mantine/hooks";
-import { Hero } from "@src/components/Hero/Hero";
-import { IProductWithoutRating } from "@src/app/datoBorrar";
 
 type AllProductsProps = {
-  products: IProductWithoutRating[];
+  products: IProduct[];
   breadcrumbItems?: IBreadcrumbItem[];
+  id: string;
 };
 
-const itemsPerPage = 10;
+const itemsPerPage = 4;
 
 export const AllProducts = ({
+  id,
   products,
   breadcrumbItems,
 }: AllProductsProps) => {
   const [visibleProducts, setVisibleProducts] = useState(
     products.slice(0, itemsPerPage)
   );
-
   const total = Math.ceil(products.length / itemsPerPage);
   const pagination = usePagination({
     total,
@@ -33,12 +32,12 @@ export const AllProducts = ({
       setVisibleProducts(products.slice(start, end));
     },
   });
-
   return (
     <>
       <CustomBreadcrumb items={breadcrumbItems} />
       <Flex
         flexWrap="wrap"
+        id={id}
         w={{ base: "100%", lg: "90%" }}
         mx="auto"
         justify={{ base: "center", lg: "space-between" }}

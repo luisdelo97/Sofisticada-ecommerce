@@ -27,9 +27,8 @@ export type ICategory = {
 
 export type IFeaturedItems = {
   topCategories: ICategory[];
-  bestDeals: IProduct[];
-  mostSellingProducts: IProduct[];
-  trendingProducts: IProduct[];
+  newProducts: IProduct[];
+  popular: IProduct[];
 };
 
 export type IItem = IProduct & {

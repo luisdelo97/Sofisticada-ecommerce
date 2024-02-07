@@ -1,12 +1,24 @@
-import { navItems } from "@/helpers";
-import { Box, Flex, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Image,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { AppLogo } from "../AppLogo";
 import { Cart } from "../Cart/Cart";
 import { Wishlist } from "../Wishlist/Wishlist";
 import { Search } from "../Search/Search";
+import { FaChevronDown } from "react-icons/fa6";
+import { ICategory } from "@src/model";
 
-export function DesktopNav() {
+export function DesktopNav({ categories }: { categories: ICategory[] }) {
   return (
     <Flex
       justify="space-between"
@@ -21,12 +33,41 @@ export function DesktopNav() {
         <Box mr="1rem">
           <AppLogo />
         </Box>
+        <Box _hover={{ color: "brand.primary" }} fontWeight="semibold">
+          <Link href="/products">Productos</Link>
+        </Box>
 
-        {navItems.map((navItem) => (
-          <Box key={navItem.label} _hover={{ color: "brand.primary" }}>
-            <Link href={navItem.href}>{navItem.label}</Link>
-          </Box>
-        ))}
+        <Menu>
+          <MenuButton
+            as={Button}
+            rightIcon={<FaChevronDown />}
+            bgColor="transparent"
+            fontWeight="semibold"
+            _active={{ bgColor: "transparent" }}
+            _hover={{ bgColor: "transparent", color: "brand.primary" }}
+          >
+            Categorias
+          </MenuButton>
+          <MenuList>
+            {categories.map((categ) => (
+              <MenuItem
+                minH="48px"
+                key={categ.id}
+                as={Link}
+                href={`/products/${categ.slug}`}
+              >
+                <Image
+                  boxSize="2rem"
+                  borderRadius="full"
+                  src={categ.image}
+                  alt={categ.slug}
+                  mr="12px"
+                />
+                <Text as="span">{categ.name}</Text>
+              </MenuItem>
+            ))}
+          </MenuList>
+        </Menu>
 
         <Search />
       </Stack>

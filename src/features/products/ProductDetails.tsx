@@ -38,9 +38,6 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
   const [quantity, setQuantity] = useState(1);
   const { isAdded, addItem, resetItems } = useContext(AppContext);
 
-  // console.log(state.cart);
-  // console.log(quantity);
-
   return (
     <>
       <CustomBreadcrumb
@@ -64,11 +61,16 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
         w={{ base: "100%", lg: "90%" }}
         mx="auto"
         p="2rem"
-        gap="20"
+        gap="15"
       >
         <GridItem p="1rem" pos="relative">
           <AddToWishlistButton product={product} />
-          <Image src={product?.mainImage} alt={product?.name} mx="auto" />
+          <Image
+            src={product?.mainImage}
+            alt={product?.name}
+            mx="auto"
+            mt="2rem"
+          />
           {/* //TODO: fix product gallery */}
           {/* <Flex>
             {product?.gallery?.length !== 0 &&
@@ -128,18 +130,17 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
 
           <Stack py="2rem">
             <Box borderWidth={1} borderColor="gray.100" p="1rem">
-              <Text fontWeight="bold">Delivery Free</Text>
+              <Text fontWeight="bold">Delivery</Text>
               <ChakraLink textDecor="underline" color="gray.500">
-                Ingresa tu codigo postal para el delivery
+                El costo del envio variara dependiendo de la zona de entrega
               </ChakraLink>
             </Box>
 
             <Box borderWidth={1} borderColor="gray.100" p="1rem">
-              <Text fontWeight="bold">Return Delivery</Text>
-              <Text color="gray.500">
-                Free 30 Days Delivery Returns
-                <ChakraLink textDecor="underline"> Detalles</ChakraLink>
-              </Text>
+              <Text fontWeight="bold">Medios de Pago</Text>
+              <ChakraLink textDecor="underline" color="gray.500">
+                Aceptamos pagos en efectivo, tarjeta y transferencia
+              </ChakraLink>
             </Box>
           </Stack>
         </GridItem>

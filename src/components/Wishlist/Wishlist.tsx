@@ -63,11 +63,11 @@ export const Wishlist = () => {
         <PopoverArrow />
         <PopoverCloseButton />
         <PopoverHeader color="brand.primary" fontWeight="bold">
-          Wishlist
+          Lista de Deseos
         </PopoverHeader>
         <PopoverBody p="1rem">
           {wishlist.length === 0 ? (
-            <>Your Wishlist is Empty</>
+            <>Tu Lista de Deseos esta vacia</>
           ) : (
             wishlist.map((item) => <WishlistItem key={item.id} item={item} />)
           )}
@@ -79,7 +79,7 @@ export const Wishlist = () => {
               mr={3}
               onClick={() => resetItems("wishlist")}
             >
-              Clear Wishlist
+              Limpiar
             </Button>
           )}
         </PopoverFooter>

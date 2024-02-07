@@ -12,24 +12,22 @@ import {
   useOutsideClick,
 } from "@chakra-ui/react";
 import type { IProduct } from "@src/model";
-// import { client } from "@utils/sanity.client";
+import { client } from "@utils/sanity.client";
 import { groq } from "next-sanity";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { inputGroup } from "./Style";
 
 const query: string = groq`
     *[_type == "product" && (name match $searchText || description match $searchText) ] {
-      ...,
       "id": _id,
+      name,
       "slug": slug.current,
         "mainImage": mainImage.asset->url,
         category->{
             name,
-            "id": _id,
-            "image": image.asset->url
+            "slug": slug.current,
         },
-        "gallery": gallery[].asset->url
     }
 `;
 
@@ -41,31 +39,33 @@ export const Search = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
 
   useOutsideClick({
-    ref: ref,
+    ref,
     handler: () => {
       setIsModalOpen(false);
       setProducts([]);
     },
   });
 
-  // const fetchProducts = async () => {
-  //   setIsLoading(true);
-  //   const products: IProduct[] = await client.fetch(query, {
-  //     searchText: `*${searchText}*`,
-  //   });
-  //   setProducts(products);
-  //   setIsLoading(false);
-  // };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setIsLoading(true);
 
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     if (searchText.trim().length >= 3) {
-  //       fetchProducts();
-  //     }
-  //   }, 1000);
+      const products: IProduct[] = await client.fetch(query, {
+        searchText: `*${searchText}*`,
+      });
 
-  //   return () => clearTimeout(timeout);
-  // }, [searchText]);
+      setProducts(products);
+      setIsLoading(false);
+    };
+
+    const timeout = setTimeout(() => {
+      if (searchText.trim().length >= 3) {
+        fetchProducts();
+      }
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, [searchText]);
 
   return (
     <Box pos="relative" w={{ base: "100%", lg: "32rem" }} ref={ref}>
@@ -120,7 +120,10 @@ const SearchedProductList = ({ products }: SearchedProductListProps) => {
   return (
     <>
       {products.map((product) => (
-        <Link key={product.id} href={`/products/${product.slug}`}>
+        <Link
+          key={product.id}
+          href={`/products/${product.category.slug}/${product.slug}`}
+        >
           <Box
             borderBottomWidth="1px"
             borderBottomColor="gray.200"

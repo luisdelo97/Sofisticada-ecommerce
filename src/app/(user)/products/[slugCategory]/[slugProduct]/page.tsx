@@ -1,23 +1,18 @@
-// "use client";
-import { provitionalProducts } from "@src/app/datoBorrar";
+import { provitionalProducts } from "@src/app/(user)/datoBorrar";
 import { ProductDetails } from "@src/features/products/ProductDetails";
 import { IProduct } from "@src/model";
-// import { client } from '@utils/sanity.client';
+import { client } from "@utils/sanity.client";
 import { groq } from "next-sanity";
-import React from "react";
 
 const query: string = groq`
-    *[_type == "product" && slug.current == $slug][0] {
-      ...,
+    *[_type == "product" && slug.current == $slugProduct][0] {
       "id": _id,
-      "slug": slug.current,
-        "mainImage": mainImage.asset->url,
-        category->{
             name,
-            "id": _id,
-            "image": image.asset->url
-        },
-        "gallery": gallery[].asset->url
+            description,
+            price,
+            "slug": slug.current,
+            "mainImage": mainImage.asset->url,
+            category->{"id": _id,name,"slug": slug.current,"image": image.asset->url},
     }
 `;
 
@@ -27,13 +22,9 @@ type Props = {
   };
 };
 
-function ProductDetailsPage({ params: { slugProduct } }: Props) {
-  // const product: IProduct = await client.fetch(query, { slug });
-  // console.log("page details");
+async function ProductDetailsPage({ params: { slugProduct } }: Props) {
+  const product: IProduct = await client.fetch(query, { slugProduct });
 
-  const product: IProduct | undefined = provitionalProducts.find(
-    (p) => p.slug === slugProduct
-  )!;
   return (
     <>
       <ProductDetails product={product} />

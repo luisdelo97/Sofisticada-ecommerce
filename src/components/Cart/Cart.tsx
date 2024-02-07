@@ -85,11 +85,11 @@ export const Cart = () => {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader color="brand.primary">
-            Cart ( {cart.length} Items )
+            Carrito ( {cart.length} Items )
           </DrawerHeader>
           <DrawerBody>
             {cart.length === 0 ? (
-              <>Your Cart is Empty</>
+              <>Tu Carrito esta vacio</>
             ) : (
               cart.map((item) => <CartItem key={item.id} item={item} />)
             )}
@@ -102,7 +102,7 @@ export const Cart = () => {
                   mr={3}
                   onClick={() => resetItems("cart")}
                 >
-                  Clear Cart
+                  Limpiar
                 </Button>
                 <Link href="/checkout">
                   <Button
@@ -116,7 +116,7 @@ export const Cart = () => {
                     }}
                     onClick={handleCheckout}
                   >
-                    Checkout
+                    Pagar
                   </Button>
                 </Link>
               </Box>

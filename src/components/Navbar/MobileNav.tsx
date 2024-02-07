@@ -4,8 +4,9 @@ import { Cart } from "../Cart/Cart";
 import { Wishlist } from "../Wishlist/Wishlist";
 import { Search } from "../Search/Search";
 import { NavMenu } from "./NavMenu";
+import { ICategory } from "@src/model";
 
-export function MobileNav() {
+export function MobileNav({ categories }: { categories: ICategory[] }) {
   return (
     <>
       <Flex
@@ -17,7 +18,7 @@ export function MobileNav() {
         borderBottom="1px"
         borderColor="gray.200"
       >
-        <NavMenu />
+        <NavMenu categories={categories} />
         <AppLogo />
 
         <Stack direction="row" spacing={1}>
