@@ -1,5 +1,5 @@
 import { Hero } from "@src/components/Hero/Hero";
-import AllProducts from "../../../../features/products/AllProducts";
+import AllProducts from "@src/features/products/AllProducts";
 import { IBreadcrumbItem, IProduct } from "@src/model";
 import { client } from "@utils/sanity.client";
 import { groq } from "next-sanity";

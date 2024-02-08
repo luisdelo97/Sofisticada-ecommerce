@@ -1,4 +1,3 @@
-import { provitionalProducts } from "@src/app/(user)/datoBorrar";
 import { ProductDetails } from "@src/features/products/ProductDetails";
 import { IProduct } from "@src/model";
 import { client } from "@utils/sanity.client";
