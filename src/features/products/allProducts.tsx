@@ -14,11 +14,7 @@ type AllProductsProps = {
 
 const itemsPerPage = 4;
 
-export const AllProducts = ({
-  id,
-  products,
-  breadcrumbItems,
-}: AllProductsProps) => {
+const AllProducts = ({ id, products, breadcrumbItems }: AllProductsProps) => {
   const [visibleProducts, setVisibleProducts] = useState(
     products.slice(0, itemsPerPage)
   );
@@ -88,3 +84,5 @@ export const AllProducts = ({
     </>
   );
 };
+
+export default AllProducts;
