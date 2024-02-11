@@ -1,7 +1,7 @@
 "use client";
 import {
   Box,
-  Button,
+  Image,
   Card,
   CardBody,
   Grid,
@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import { SectionHeading } from "@src/components/SectionHeading";
 import { ICategory } from "@src/model";
-import Image from "next/image";
 import Link from "next/link";
 
 type TopCategoriesProps = {
@@ -30,8 +29,8 @@ export const TopCategories = ({ categories }: TopCategoriesProps) => {
         }}
         gap="4"
       >
-        {categories.map((category) => (
-          <GridItem key={category.id}>
+        {categories?.map((category) => (
+          <GridItem key={category?.id}>
             <TopCategoryCard category={category} />
           </GridItem>
         ))}
@@ -40,12 +39,12 @@ export const TopCategories = ({ categories }: TopCategoriesProps) => {
   );
 };
 
-interface TopCategoryCardProps {
+type TopCategoryCardProps = {
   category: ICategory;
-}
+};
 
 const TopCategoryCard = ({ category }: TopCategoryCardProps) => (
-  <Link href={`/products/${category.slug}`}>
+  <Link href={`/products/${category?.slug}`}>
     <Card
       direction="row"
       align="center"
@@ -57,14 +56,14 @@ const TopCategoryCard = ({ category }: TopCategoryCardProps) => (
       _hover={{ cursor: "pointer", bgColor: "gray.100" }}
     >
       <Image
-        src={category.image}
-        alt={category.name}
-        height={100}
-        width={100}
+        src={category?.image}
+        alt={category?.name}
+        boxSize={100}
+        objectFit="contain"
       />
 
       <CardBody>
-        <Heading size={{ base: "sm", lg: "md" }}>{category.name}</Heading>
+        <Heading size={{ base: "sm", lg: "md" }}>{category?.name}</Heading>
       </CardBody>
     </Card>
   </Link>

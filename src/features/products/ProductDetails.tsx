@@ -3,11 +3,9 @@ import {
   Box,
   Button,
   Divider,
-  Flex,
   Grid,
   GridItem,
   Heading,
-  Image,
   Link as ChakraLink,
   Stack,
   Text,
@@ -22,10 +20,11 @@ import { IBreadcrumbItem, IProduct } from "@src/model";
 import React, { useContext, useState } from "react";
 import { AddToWishlistButton } from "@src/components/Wishlist/AddToWishlistButton";
 import Link from "next/link";
+import ImageGallery from "./ImageGallery";
 
-interface ProductDetailsProps {
+type ProductDetailsProps = {
   product: IProduct;
-}
+};
 
 const items: IBreadcrumbItem[] = [
   {
@@ -65,29 +64,8 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
       >
         <GridItem p="1rem" pos="relative">
           <AddToWishlistButton product={product} />
-          <Image
-            src={product?.mainImage}
-            alt={product?.name}
-            mx="auto"
-            mt="2rem"
-          />
-          {/* //TODO: fix product gallery */}
-          {/* <Flex>
-            {product?.gallery?.length !== 0 &&
-              product?.gallery?.map((image, i) => (
-                <Image
-                  key={i}
-                  src={image}
-                  alt={product?.name}
-                  mx="auto"
-                  boxSize="70px"
-                  rounded="md"
-                  shadow="sm"
-                  borderWidth="1px"
-                  borderColor="gray.100"
-                />
-              ))}
-          </Flex> */}
+
+          <ImageGallery product={product} />
         </GridItem>
         <GridItem p="1rem">
           <Heading>{product?.name}</Heading>

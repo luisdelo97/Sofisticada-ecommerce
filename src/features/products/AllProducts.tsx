@@ -18,6 +18,7 @@ const AllProducts = ({ id, products, breadcrumbItems }: AllProductsProps) => {
   const [visibleProducts, setVisibleProducts] = useState(
     products.slice(0, itemsPerPage)
   );
+
   const total = Math.ceil(products.length / itemsPerPage);
   const pagination = usePagination({
     total,

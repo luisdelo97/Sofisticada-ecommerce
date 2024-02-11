@@ -15,7 +15,7 @@ export type IProduct = {
   slug: string;
   mainImage: string;
   category: ICategory;
-  gallery?: string[];
+  gallery?: { url: string; caption: string }[];
 };
 
 export type ICategory = {

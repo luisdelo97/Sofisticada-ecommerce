@@ -25,7 +25,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       <CardBody>
         <Link href={`/products/${product?.category.slug}/${product?.slug}`}>
           <Box
-            bg={`center / contain no-repeat url(${product.mainImage})`}
+            bg={`center / contain no-repeat url(${product?.mainImage})`}
             borderRadius="lg"
             boxSize="200px"
             mx="auto"
@@ -41,11 +41,11 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           <Flex justify="space-between" align="center">
             <Link href={`/products/${product?.category.slug}/${product?.slug}`}>
               <Heading size="sm" color="brand.primaryDark">
-                {getSubstring(product.name, 25)}
+                {getSubstring(product?.name, 25)}
               </Heading>
             </Link>
           </Flex>
-          <Text fontSize="sm"> {getSubstring(product.description, 65)} </Text>
+          <Text fontSize="sm"> {getSubstring(product?.description, 65)} </Text>
           <Flex
             justifyContent="space-between"
             fontWeight="bold"
@@ -54,7 +54,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             <AddToCartButton product={product} />
             {/* //! */}
             <Text fontSize="lg" color="brand.primary">
-              ${product.price}
+              ${product?.price}
             </Text>
           </Flex>
         </Stack>

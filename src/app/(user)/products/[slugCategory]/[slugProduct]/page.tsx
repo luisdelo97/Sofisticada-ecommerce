@@ -12,6 +12,7 @@ const query: string = groq`
             "slug": slug.current,
             "mainImage": mainImage.asset->url,
             category->{"id": _id,name,"slug": slug.current,"image": image.asset->url},
+            gallery[]{"url":asset->url,caption}
     }
 `;
 

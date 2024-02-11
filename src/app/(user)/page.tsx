@@ -46,11 +46,11 @@ export default async function Home() {
   return (
     <main>
       <Banner />
-      <TopCategories categories={featuredItems[0].topCategories} />
-      <FeaturedProducts title="Popular" products={featuredItems[0].popular} />
+      <TopCategories categories={featuredItems[0]?.topCategories} />
+      <FeaturedProducts title="Popular" products={featuredItems[0]?.popular} />
       <FeaturedProducts
         title="Lo nuevo"
-        products={featuredItems[0].newProducts}
+        products={featuredItems[0]?.newProducts}
       />
     </main>
   );
