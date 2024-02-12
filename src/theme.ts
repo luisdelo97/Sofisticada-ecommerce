@@ -3,10 +3,11 @@ import { buildLegacyTheme } from "sanity";
 
 export const colors = {
   brand: {
-    primary: "hsl(17, 70%, 63.90%)",
-    primaryLight: "hsl(17, 70%, 74%)",
+    primary: "hsl(12, 82.80%, 77.30%)",
+    primaryLight: "hsl(11, 78.70%, 85.30%)",
     primaryDark: "hsl(17, 70%, 25%)",
     primaryHighlight: "hsl(13, 100%, 95.30%)",
+    white: "hsl(255, 100%, 100%)",
   },
 };
 //

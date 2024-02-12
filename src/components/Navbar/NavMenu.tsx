@@ -75,13 +75,6 @@ export const NavMenu = ({ categories }: { categories: ICategory[] }) => {
                     as={Link}
                     href={`/products/${categ.slug}`}
                   >
-                    <Image
-                      boxSize="2rem"
-                      borderRadius="full"
-                      src={categ.image}
-                      alt={categ.slug}
-                      mr="12px"
-                    />
                     <Text as="span">{categ.name}</Text>
                   </MenuItem>
                 ))}

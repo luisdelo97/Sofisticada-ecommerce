@@ -33,7 +33,11 @@ export function DesktopNav({ categories }: { categories: ICategory[] }) {
         <Box mr="1rem">
           <AppLogo />
         </Box>
-        <Box _hover={{ color: "brand.primary" }} fontWeight="semibold">
+        <Box
+          _hover={{ color: "black" }}
+          color="brand.white"
+          fontWeight="semibold"
+        >
           <Link href="/products">Productos</Link>
         </Box>
 
@@ -43,8 +47,9 @@ export function DesktopNav({ categories }: { categories: ICategory[] }) {
             rightIcon={<FaChevronDown />}
             bgColor="transparent"
             fontWeight="semibold"
+            color="brand.white"
             _active={{ bgColor: "transparent" }}
-            _hover={{ bgColor: "transparent", color: "brand.primary" }}
+            _hover={{ bgColor: "transparent", color: "black" }}
           >
             Categorias
           </MenuButton>
@@ -56,13 +61,6 @@ export function DesktopNav({ categories }: { categories: ICategory[] }) {
                 as={Link}
                 href={`/products/${categ.slug}`}
               >
-                <Image
-                  boxSize="2rem"
-                  borderRadius="full"
-                  src={categ.image}
-                  alt={categ.slug}
-                  mr="12px"
-                />
                 <Text as="span">{categ.name}</Text>
               </MenuItem>
             ))}

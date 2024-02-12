@@ -20,13 +20,7 @@ export const Navbar = async () => {
   return (
     <>
       <Box className="navbar-wrapper" h="80px" mb="1.5rem">
-        <Box
-          pos="fixed"
-          w="100%"
-          bgColor="brand.primaryHighlight"
-          mb="1rem"
-          zIndex={10}
-        >
+        <Box pos="fixed" w="100%" bgColor="brand.primary" mb="1rem" zIndex={10}>
           <DesktopNav categories={categories} />
           <MobileNav categories={categories} />
         </Box>

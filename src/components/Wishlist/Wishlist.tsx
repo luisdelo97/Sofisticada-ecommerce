@@ -27,18 +27,22 @@ export const Wishlist = () => {
     <Popover>
       <PopoverTrigger>
         <Button
-          color="brand.primaryDark"
+          color="brand.white"
           variant="ghost"
           _hover={{
             bgColor: "transparent",
-            color: "brand.primary",
+            color: "black",
           }}
           pos="relative"
           px={{ base: "0.25rem" }}
         >
           <BsHeart size="0.8rem" />
 
-          <Text mx="1" display={{ base: "none", md: "block" }}>
+          <Text
+            mx="1"
+            display={{ base: "none", md: "block" }}
+            fontWeight="bold"
+          >
             Deseos
           </Text>
           {wishlist.length !== 0 && (
