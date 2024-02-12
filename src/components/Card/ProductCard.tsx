@@ -8,7 +8,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { getSubstring } from "@src/helpers";
+import { formatPrice, getSubstring } from "@src/helpers";
 import { IProduct } from "@src/model";
 import Link from "next/link";
 import { AddToWishlistButton } from "../Wishlist/AddToWishlistButton";
@@ -54,7 +54,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             <AddToCartButton product={product} />
             {/* //! */}
             <Text fontSize="lg" color="brand.primary">
-              ${product?.price}
+              ${formatPrice(product?.price)}
             </Text>
           </Flex>
         </Stack>

@@ -27,6 +27,17 @@ export const calculateItemsTotal = (items: IItem[]): number => {
     );
 };
 
-export const formatPrice = (value: number): string => {
-  return value.toFixed(2);
-};
+// export const formatPrice = (value: number): string => {
+//   return value.toFixed(2);
+// };
+
+export function formatPrice(num: number) {
+  // Primero, convertimos el número a una cadena de texto
+  let numParts = num.toString().split(".");
+
+  // Luego, aplicamos el formato de separador de miles a la parte entera
+  numParts[0] = numParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+  // Finalmente, unimos las partes entera y decimal con una coma
+  return numParts.join(",");
+}

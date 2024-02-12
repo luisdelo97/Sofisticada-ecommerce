@@ -8,6 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { AppContext } from "@src/context/AppContext";
+import { formatPrice } from "@src/helpers";
 import { IItem } from "@src/model";
 import Link from "next/link";
 import { useContext } from "react";
@@ -61,7 +62,7 @@ export const CartItem = ({ item }: CartItemProps) => {
         </HStack>
       </GridItem>
       <GridItem textAlign="right" colSpan={{ base: 2, lg: 1 }}>
-        <Text fontWeight="bold">$ {item.price * item.count}</Text>
+        <Text fontWeight="bold">$ {formatPrice(item.price * item.count)}</Text>
       </GridItem>
       <GridItem textAlign="right">
         <Button

@@ -14,7 +14,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { AppContext } from "@src/context/AppContext";
-import { calculateItemsTotal } from "@src/helpers";
+import { calculateItemsTotal, formatPrice } from "@src/helpers";
 import Link from "next/link";
 import { useContext, useRef } from "react";
 import { BsCart4 } from "react-icons/bs";
@@ -120,7 +120,9 @@ export const Cart = () => {
                   </Button>
                 </Link>
               </Box>
-              <Box fontWeight="bold">Total: $ {calculateItemsTotal(cart)}</Box>
+              <Box fontWeight="bold">
+                Total: $ {formatPrice(calculateItemsTotal(cart))}
+              </Box>
             </DrawerFooter>
           )}
         </DrawerContent>
