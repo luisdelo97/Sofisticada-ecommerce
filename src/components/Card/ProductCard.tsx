@@ -52,9 +52,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             alignItems="center"
           >
             <AddToCartButton product={product} />
-            {/* //! */}
             <Text fontSize="lg" color="brand.primary">
-              ${formatPrice(product?.price)}
+              &#8370;{formatPrice(product?.price)}
             </Text>
           </Flex>
         </Stack>

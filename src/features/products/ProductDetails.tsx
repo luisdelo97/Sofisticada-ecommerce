@@ -15,7 +15,7 @@ import { AddToCartButton } from "@src/components/Card/AddToCartButton";
 import { CustomBreadcrumb } from "@src/components/CustomBreadcrumb";
 import { Quantity } from "@src/components/Quantity/Quantity";
 import { AppContext } from "@src/context/AppContext";
-import { getSubstring } from "@src/helpers";
+import { formatPrice, getSubstring } from "@src/helpers";
 import { IBreadcrumbItem, IProduct } from "@src/model";
 import React, { useContext, useState } from "react";
 import { AddToWishlistButton } from "@src/components/Wishlist/AddToWishlistButton";
@@ -72,7 +72,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
           <Text my="1rem">{product?.description}</Text>
 
           <Text fontWeight="bold" fontSize="2rem">
-            ${product?.price}
+            &#8370;{formatPrice(product?.price)}
           </Text>
           <Divider my="1rem" />
           <Quantity

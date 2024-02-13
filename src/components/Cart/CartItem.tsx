@@ -62,7 +62,9 @@ export const CartItem = ({ item }: CartItemProps) => {
         </HStack>
       </GridItem>
       <GridItem textAlign="right" colSpan={{ base: 2, lg: 1 }}>
-        <Text fontWeight="bold">$ {formatPrice(item.price * item.count)}</Text>
+        <Text fontWeight="bold">
+          &#8370;{formatPrice(item.price * item.count)}
+        </Text>
       </GridItem>
       <GridItem textAlign="right">
         <Button

@@ -1,6 +1,6 @@
 import { Button, Grid, GridItem, Image, Text } from "@chakra-ui/react";
 import { AppContext } from "@src/context/AppContext";
-import { getSubstring } from "@src/helpers";
+import { formatPrice, getSubstring } from "@src/helpers";
 import { IItem } from "@src/model";
 import Link from "next/link";
 import { useContext } from "react";
@@ -44,7 +44,7 @@ export const WishlistItem = ({ item }: WishlistItemProps) => {
 
       <GridItem>
         <Text fontWeight="bold" fontSize="xs">
-          $ {item.price}
+          &#8370;{formatPrice(item.price)}
         </Text>
       </GridItem>
 

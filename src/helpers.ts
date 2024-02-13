@@ -1,15 +1,4 @@
-import { IItem, NavItem } from "./model";
-
-export const navItems: NavItem[] = [
-  {
-    label: "Productos",
-    href: "/products",
-  },
-  {
-    label: "Categorias",
-    href: "/categories",
-  },
-];
+import { IItem } from "./model";
 
 export const getSubstring = (text: string, substringEnd: number): string => {
   return text?.length > substringEnd
@@ -26,10 +15,6 @@ export const calculateItemsTotal = (items: IItem[]): number => {
       0
     );
 };
-
-// export const formatPrice = (value: number): string => {
-//   return value.toFixed(2);
-// };
 
 export function formatPrice(num: number) {
   // Primero, convertimos el número a una cadena de texto

@@ -121,7 +121,7 @@ export const Cart = () => {
                 </Link>
               </Box>
               <Box fontWeight="bold">
-                Total: $ {formatPrice(calculateItemsTotal(cart))}
+                Total: &#8370;{formatPrice(calculateItemsTotal(cart))}
               </Box>
             </DrawerFooter>
           )}
